@@ -138,3 +138,93 @@ momentCentrat4 <- function(f){
   }
   integrate(Vectorize(fh),-Inf,Inf)$value #return the integral
 }
+
+
+# ex2
+
+verifica_densitate <- function(l, r, ecuatie) #se trasnmite intervalul si functia
+{
+  z = NULL
+
+  #se incearca integrarea functiei date
+  tryCatch(z <- integrate(f = functie, -Inf, Inf), warning = function(w) {return(FALSE)}, error = function(e) {return(FALSE)})
+  
+  if(!(is.numeric(z$value)) || z$value != 1) #se verifica daca rezultatul integralei este 1
+  { 
+    return(FALSE)
+  }
+  
+  while (l <= r)
+  {
+    if(functie(l) < 0) #se verifica daca functia este pozitiva pe intervalul dat
+    {
+      return(FALSE)
+    }
+    l <- l + 0.01
+  }
+  
+  return(TRUE)
+}
+
+# ex4
+
+calcul_densitate <- function(l, r, dim, parametri) #se transmite intervalul si dimensiunea variabilei aleatoare impreuna cu lista de parametri
+{
+  probab <- integer(r - l + 1)
+  probabilitate <- integer(r - l + 1)
+  densitate <- integer(length(parametri)) #se creeaza vectorii care vor stoca probabilitatile
+  j <- 1
+  
+  valori <- sample(l:r, dim) #se creeaza variabila aleatoare
+  for (i in valori)
+  {
+    probab[i] <- probab[i] + 1
+  }
+  for (i in probab)
+  {  
+    probabilitate[j] <- i / (r - l + 1) #se creeaza vectorul de probabilitati asociat variabilei
+    j <- j + 1
+  }
+  
+  j <- 1
+
+  while (j <= length(parametri))
+  {
+    i <- 1
+    while(i <= dim)
+    {
+      if(parametri[j] == valori[i]) # se calculeaza densitatea parameterilor in variabila aleatoare
+      {
+        densitate[j] <- probabilitate[valori[i]]
+      }
+      i <- i + 1
+    }
+    
+    j <- j + 1
+  }
+  
+  plot(parametri, densitate, "b", col = "red") # se deseneaza graficul
+}
+
+# ex6
+
+calcul_medie_dispersie <- function(l, r, dim, ecuatie)#se transmite intervalul si dimensiunea variabilei aleatoare impreuna cu ecuatia(functie)
+{
+  suma <- 0
+  suma_patrate <- 0 #sunt initializate sumele
+  
+  z <- sample(l:r, dim) #se creeaza variabila aleatoare
+
+  for (i in z)
+  {
+    suma <- suma + ecuatie(i)
+    suma_patrate <- suma_patrate + ecuatie(i) * ecuatie(i)
+  }
+  
+  media <- suma / dim
+  dispersia <- suma_patrate / dim - media * media # se efectueaza calculul mediei si al dispersiei
+  print(media)
+  print(dispersia)
+}
+
+
