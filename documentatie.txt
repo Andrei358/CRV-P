@@ -1,6 +1,6 @@
 Documentatie Proiect
 
-1. Nume: Mihailescu Andrei si Bucur David
+1. Nume: Mihailescu Andrei (lider) si Bucur David
 
 2. Am ales Proiectul nr.1 si am implementat taskurile 1,2,4,5,6,11,12.
 Proiectul a presupus crearea unui pachet R care sa implementeze multiple
