@@ -15,10 +15,14 @@
 
 # Proiect de Andrei Mihailescu si David Bucur
 
+#ex1
+
 constantaNormalizare <- function(f) {
   area = integrate(f,-Inf,Inf)$value #compute the area under the curve
   1/area
 }
+
+#ex11
 
 marginalX <- function(f, x) {
   ff <- function(val){f(x,val)} #helper function
@@ -50,6 +54,8 @@ conditionalYX <- function(f,x,y){
   }
 }
 
+#ex12
+
 addXY <- function (f,s){
   fh <- function(x){ #helper function implementing the convolution
     marginalX(f,x) * marginalY(f,s-x)
@@ -63,6 +69,8 @@ diffXY <- function (f,d){
   }
   integrate(Vectorize(fh),-Inf,Inf)$value #return the integral
 }
+
+#ex5
 
 medie <- function(f){
   fh <- function(x){ #helper function
@@ -226,5 +234,3 @@ calcul_medie_dispersie <- function(l, r, dim, ecuatie)#se transmite intervalul s
   print(media)
   print(dispersia)
 }
-
-
