@@ -1,0 +1,9 @@
+1. Nume: Mihailescu Andrei si David Bucur
+2. Am ales problema nr.1 si am implementat taskurile 1,5,11,12..
+3.
+4. Am folosit in multe dintre cerinte functia integrate.
+5.
+6. Am intampinat anumite dificultati privind erorile in timpul executiei, dar
+le-am depasit in final.
+7. A fost un proiect placut din care am invatat destul de multe lucruri despre
+lucratul cu distributii si mai ales despre R.
